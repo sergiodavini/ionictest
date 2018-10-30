@@ -1,26 +1,15 @@
-<table *ngIf="playlists">
+<table *ngIf="playlist">
 	<thead>
 		<tr>
 			<td></td>
 			<td>Titolo</td	>
-			<td>Pubblica</td>
-			<td>Numero Brani</td>
+			<td>Immagine</td>
 		</tr>
 	</thead>
-	<tr *ngFor="let item of playlists.items">
-		<td><img src="{{getImage(item)}}" width="80px;"/></td>
-		<td>{{item.name}}</td>
-		<td>{{item.public?'Sì':'No'}}</td>
-		<td>{{item.tracks?.total}}</td>
+	<tr *ngFor="let item of playlist.tracks?.items">
+		<td><img src="{{getImage(item.track.album)}}" width="80px;"/></td>
+		<td>{{item.track?.name}}</td>
+		<td>{{item.track?.album?.images}}</td>
 	</tr>
 </table>
 
-<ul class="pagination" *ngIf="playlists">
-	<li [class.disabled]="page==1"><a (click)="goPagePrevious()"><i class="material-icons">chevron_left</i></a></li>
-	<li class="waves-effect"><a (click)="goPage(firstlink)">{{firstlink}}</a></li>
-	<li class="waves-effect"><a (click)="goPage(firstlink + 1)">{{firstlink + 1}}</a></li>
-	<li class="waves-effect"><a (click)="goPage(firstlink + 2)">{{firstlink + 2}}</a></li>
-	<li class="waves-effect"><a (click)="goPage(firstlink + 3)">{{firstlink + 3}}</a></li>
-	<li class="waves-effect"><a (click)="goPage(firstlink + 4)">{{firstlink + 4}}</a></li>
-	<li class="waves-effect"><a (click)="goPageNext()"><i class="material-icons">chevron_right</i></a></li>
-</ul>

@@ -71,9 +71,19 @@ export class SpotifyService {
 		let params = new HttpParams();
 		params = params.append('limit', limit.toString());
 		params = params.append('offset', offset.toString());
-		return this.http.get<String>('	https://api.spotify.com/v1/me/playlists', { observe: 'response', headers: hd, params: params });
+		return this.http.get<String>('https://api.spotify.com/v1/me/playlists', { observe: 'response', headers: hd, params: params });
 
 	}
+
+	getPlaylist(token: string, id: string): Observable<HttpResponse<String>> {
+		// const params: HttpParams = new HttpParams();
+		let hd = new HttpHeaders();
+		hd = hd.append('Authorization', `Bearer ${token}`);
+
+		return this.http.get<String>('https://api.spotify.com/v1/playlists/' + id, { observe: 'response', headers: hd });
+
+	}
+
 
 	detailArtists(token: string, ids: string[]): Observable<HttpResponse<String>> {
 		// const params: HttpParams = new HttpParams();

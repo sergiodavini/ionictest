@@ -12,7 +12,7 @@ export class AuthService {
 	constructor(
 		private spotifyService: SpotifyService
 	) {
-		this.token = localStorage.getItem('auth.mm.token');
+		this.token = sessionStorage.getItem('auth.mm.token');
 	}
 
 	public getToken(): string {
@@ -32,7 +32,7 @@ export class AuthService {
 			esito = true;
 		}
 
-		localStorage.setItem('auth.mm.token', this.token);
+		sessionStorage.setItem('auth.mm.token', this.token);
 		return esito;
 	}
 

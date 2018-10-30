@@ -1,6 +1,7 @@
 
 import { Exturl } from './exturl.model';
 import { Image } from './image.model';
+import { Item } from './item.model';
 
 export class Playlists {
 	public href?: string;
@@ -31,4 +32,5 @@ export class Playlist {
 export class Tracks {
 	public href?: string;
 	public total?: number;
+	public items?: Item[];
 }
