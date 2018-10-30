@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+	production: false,
+	clientid: '171b8d2440a54ce68a6f88a07a29d526',
+	sectredid: '88e137b982704fa6816846a9cefd431e',
+	redirecturi: 'http://localhost:4500/callback',
+	scopes: 'user-read-private user-read-email'
 };
 
 /*

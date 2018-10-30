@@ -1,0 +1,29 @@
+<table *ngIf="newrelease">
+	<thead>
+		<tr>
+			<td>Tipo</td>
+			<td>Titolo</td>
+			<td>Artista</td>
+			<td>Data</td>
+		</tr>
+	</thead>
+	<tr *ngFor="let item of newrelease.albums.items">
+		<td>{{item.type}}</td>
+		<td>{{item.name}}</td>
+		<td><ng-container *ngFor="let artist of item.artists">
+			{{artist.name}}&nbsp;
+		</ng-container>
+		</td>
+		<td>{{item.release_date}}</td>
+	</tr>
+</table>
+
+<ul class="pagination" *ngIf="newrelease">
+	<li [class.disabled]="page==1"><a (click)="goPagePrevious()"><i class="material-icons">chevron_left</i></a></li>
+	<li class="waves-effect"><a (click)="goPage(firstlink)">{{firstlink}}</a></li>
+	<li class="waves-effect"><a (click)="goPage(firstlink + 1)">{{firstlink + 1}}</a></li>
+	<li class="waves-effect"><a (click)="goPage(firstlink + 2)">{{firstlink + 2}}</a></li>
+	<li class="waves-effect"><a (click)="goPage(firstlink + 3)">{{firstlink + 3}}</a></li>
+	<li class="waves-effect"><a (click)="goPage(firstlink + 4)">{{firstlink + 4}}</a></li>
+	<li class="waves-effect"><a (click)="goPageNext()"><i class="material-icons">chevron_right</i></a></li>
+</ul>
