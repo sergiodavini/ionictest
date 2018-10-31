@@ -1,0 +1,41 @@
+:host {
+	height: 80vh;
+	width: 100vh;
+}
+
+div.imagecontainer {
+	padding: 100px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	height: 100%;
+	width: 100%;
+}
+
+div.leftbutton {
+	width: 100px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+div.centerimage {
+	flex: 1 1 auto;
+	align-items: center;
+	justify-content: center;
+}
+.imagecover {
+	height: 100%;
+	width: 100%;
+	background-size: contain; 
+    background-repeat: no-repeat; 
+    background-position: center;
+
+}
+div.rightbutton {
+	width: 100px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+

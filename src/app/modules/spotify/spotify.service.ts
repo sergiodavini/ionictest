@@ -90,7 +90,7 @@ export class SpotifyService {
 		let hd = new HttpHeaders();
 		hd = hd.append('Authorization', `Bearer ${token}`);
 
-		let params = new HttpParams();
+		const params = new HttpParams();
 		// params = params.append('country', 'IT');
 		return this.http.get<String>('https://api.spotify.com/v1/browse/new-releases', { observe: 'response', headers: hd, params: params });
 

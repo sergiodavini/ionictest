@@ -4,6 +4,7 @@ import { SpotifyService } from '../spotify/spotify.service';
 import { ErrorService } from '../common/error.service';
 import { Playlists, Playlist } from '../spotify/data/playlists.model';
 import { Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
 	selector: 'mm-playlists',
@@ -13,18 +14,15 @@ import { Router } from '@angular/router';
 export class PlaylistsComponent implements OnInit {
 
 	playlists: Playlists;
-	firstlink =  1;
-	lastlink = 9;
-	page = 1;
-	maxpage = 1;
-	lastpage = false;
+	index = 0;
 	pagelimit = 50;
 
 	constructor (
 		private spotifyService: SpotifyService,
 		private authService: AuthService,
 		private errorService: ErrorService,
-		private route: Router
+		private route: Router,
+		private sanitizer: DomSanitizer
 	) {
 
 	}
@@ -32,6 +30,7 @@ export class PlaylistsComponent implements OnInit {
 	public ngOnInit() {
 		this.listNewReleases(1);
 	}
+
 
 	public listNewReleases(page) {
 
@@ -46,63 +45,43 @@ export class PlaylistsComponent implements OnInit {
 	onListSuccess(res) {
 
 		this.playlists = res.body;
-		const albums = this.playlists;
-
-		this.maxpage = albums.total / albums.limit;
-		if (albums.offset === 0) {
-			this.page = 1;
-		} else {
-			this.page = albums.offset / albums.limit + 1;
-		}
-
-		if (this.maxpage > 5) {
-			if (this.page < 4) {
-				this.firstlink = 1;
-				this.lastlink = 5;
-			} else {
-				this.firstlink = this.page - 2;
-				this.lastlink = this.firstlink + 4;
-			}
-		} else {
-			this.firstlink = 1;
-			this.lastlink = this.maxpage;
-		}
+		this.index = 0;
 
 	}
-
 
 	onError(res) {
 		this.errorService.handleError(res);
 	}
 
-	goPagePrevious() {
-		if (this.page > 1) {
-			this.goPage(this.page - 1);
+	goPlaylist() {
+		const item: Playlist = this.playlists.items[this.index];
+		this.route.navigate(['cover/' +  item.id]);
+	}
+
+	next() {
+		this.index = this.index + 1 ;
+		if (this.index >= this.playlists.items.length) {
+			this.index = 0;
+		}
+	}
+	previous() {
+		this.index = this.index - 1 ;
+		if (this.index < 0 ) {
+			this.index = this.playlists.items.length - 1;
 		}
 	}
 
-	goPageNext() {
-		if (this.page < this.maxpage) {
-			this.goPage(this.page + 1);
-		}
-	}
-
-	goPage(num) {
-		if (num !== this.page) {
-			this.listNewReleases(num);
-		}
-	}
-
-	goPlaylist(item: Playlist) {
-		this.route.navigate(['playlist/' +  item.id]);
+	getCurrentImage() {
+		const url = this.getImage(this.playlists.items[this.index]);
+		return this.sanitizer.bypassSecurityTrustStyle('url(\'' + url + '\')');
 	}
 
 	getImage(item: Playlist): string {
-		let size = 999999;
+		let size = -1;
 		let url;
 		if (item.images !== undefined) {
 			item.images.forEach(image => {
-				if (image.width < size) {
+				if (image.width > size) {
 					size = image.width;
 					url = image.url;
 				}

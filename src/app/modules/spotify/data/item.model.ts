@@ -4,6 +4,7 @@ import { Artist } from './artist.model';
 
 export class Item {
 
+	public track?: Track;
 	public album_type?: string;
 	public name?: string;
 	public release_date?: string;
@@ -17,5 +18,13 @@ export class Item {
 	public external_urls?: Exturl;
 	public images?: Image[];
 
+}
+
+export class Track {
+	public album: Album;
+}
+
+export class Album {
+	public images: Image[];
 }
 

@@ -1,4 +1,4 @@
-<table *ngIf="playlists">
+<!-- <table *ngIf="playlists">
 	<thead>
 		<tr>
 			<td></td>
@@ -24,3 +24,16 @@
 	<li class="waves-effect"><a (click)="goPage(firstlink + 4)">{{firstlink + 4}}</a></li>
 	<li class="waves-effect"><a (click)="goPageNext()"><i class="material-icons">chevron_right</i></a></li>
 </ul>
+-->
+
+<div class="imagecontainer" *ngIf="playlists">
+	<div class="leftbutton" (click)="previous()"><i class="material-icons">keyboard_arrow_left</i></div>
+	<div class="centerimage" (click)="goPlaylist()">
+		<div class="imagecover" [style.background-image]="getCurrentImage()" >
+		</div>
+		<div class="imagetext" >
+			{{playlists.items[index].name}}
+		</div>
+	</div>
+	<div class="rightbutton" (click)="next()"><i class="material-icons">keyboard_arrow_right</i></div>
+</div>

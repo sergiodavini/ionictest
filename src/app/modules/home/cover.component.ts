@@ -1,16 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { SpotifyService } from '../spotify/spotify.service';
 import { ErrorService } from '../common/error.service';
 import { Playlist } from '../spotify/data/playlists.model';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { ImageService } from '../image/image.service';
+import { Cover } from '../image/cover.model';
+import { Image } from '../spotify/data/image.model';
 
 @Component({
-	selector: 'mm-playlist',
-	templateUrl: './playlist.component.html',
-	styleUrls: ['./playlist.component.css']
+	selector: 'mm-cover',
+	templateUrl: './cover.component.html',
+	styleUrls: ['./cover.component.css']
 })
-export class PlaylistComponent implements OnInit {
+export class CoverComponent implements OnInit {
+
+	@ViewChild('myCanvas') canvashtml: ElementRef;
 
 	playlist: Playlist;
 	firstlink =  1;
@@ -26,7 +31,7 @@ export class PlaylistComponent implements OnInit {
 		private authService: AuthService,
 		private errorService: ErrorService,
 		private route: ActivatedRoute,
-		private router: Router
+		private imageService: ImageService
 	) {
 
 	}
@@ -51,29 +56,44 @@ export class PlaylistComponent implements OnInit {
 
 		this.playlist = res.body;
 
+		const cover = new Cover();
+		cover.canvas = this.canvashtml;
+
+		const urls = [];
+		this.playlist.tracks.items.forEach(item => {
+				const image = this.getImage(item.track.album);
+				cover.addImage(image);
+			}
+		);
+
+		this.imageService.buildCanvas(cover).subscribe(
+			(resp) => this.imageProcessed(resp)
+		);
+		console.log('sono qui');
 	}
 
+	imageProcessed(res) {
+		console.log('immagine finita', res);
+	}
 
 	onError(res) {
 		this.errorService.handleError(res);
 	}
 
-	getImage(item: Playlist): string {
+	getImage(item): Image {
+
+		let result;
+
 		let size = 999999;
-		let url;
 		if (item.images !== undefined) {
 			item.images.forEach(image => {
 				if (image.width < size) {
 					size = image.width;
-					url = image.url;
+					result = image;
 				}
 			});
 		}
-		return url;
-	}
 
-	public doCover() {
-		this.router.navigate(['/cover/' + this.id]);
+		return result;
 	}
-
 }

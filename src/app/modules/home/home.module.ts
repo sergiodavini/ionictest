@@ -5,19 +5,24 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '../common/common.module';
 import { PlaylistsComponent } from './playlists.component';
 import { PlaylistComponent } from './playlist.component';
+import { ImageService } from '../image/image.service';
+import { CoverComponent } from './cover.component';
 
 @NgModule({
 	declarations: [
 		HomeComponent,
 		NewreleaseComponent,
 		PlaylistComponent,
-		PlaylistsComponent
+		PlaylistsComponent,
+		CoverComponent
 	],
 	imports: [
 		BrowserModule,
 		CommonModule
 	],
-	providers: [],
+	providers: [
+		ImageService
+	],
 	bootstrap: []
 })
 export class HomeModule { }

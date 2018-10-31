@@ -21,7 +21,7 @@ export class CallbackComponent implements OnInit {
 	ngOnInit() {
 		this.route.fragment.subscribe((fragment: string) => {
 			if (this.authService.callback(fragment)) {
-				this.router.navigate(['/home']);
+				this.router.navigate(['/playlists']);
 			}
 		});
 	}
