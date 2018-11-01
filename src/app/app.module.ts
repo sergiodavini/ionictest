@@ -15,6 +15,7 @@ import { NewreleaseComponent } from './modules/home/newrelease.component';
 import { PlaylistComponent } from './modules/home/playlist.component';
 import { PlaylistsComponent } from './modules/home/playlists.component';
 import { CoverComponent } from './modules/home/cover.component';
+import { OptionComponent } from './modules/home/option.component';
 
 
 const mmRoutes: Routes = [
@@ -22,6 +23,7 @@ const mmRoutes: Routes = [
 	{ path: 'newrelease', component: NewreleaseComponent, canActivate: [AuthGuard] },
 	{ path: 'playlists', component: PlaylistsComponent, canActivate: [AuthGuard] },
 	{ path: 'playlist/:id', component: PlaylistComponent, canActivate: [AuthGuard] },
+	{ path: 'option/:id', component: OptionComponent, canActivate: [AuthGuard] },
 	{ path: 'cover/:id', component: CoverComponent, canActivate: [AuthGuard] },
 	{ path: 'login', component: LoginComponent },
 	{ path: 'callback', component: CallbackComponent },

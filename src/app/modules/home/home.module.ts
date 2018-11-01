@@ -7,6 +7,7 @@ import { PlaylistsComponent } from './playlists.component';
 import { PlaylistComponent } from './playlist.component';
 import { ImageService } from '../image/image.service';
 import { CoverComponent } from './cover.component';
+import { OptionComponent } from './option.component';
 
 @NgModule({
 	declarations: [
@@ -14,7 +15,8 @@ import { CoverComponent } from './cover.component';
 		NewreleaseComponent,
 		PlaylistComponent,
 		PlaylistsComponent,
-		CoverComponent
+		CoverComponent,
+		OptionComponent
 	],
 	imports: [
 		BrowserModule,
