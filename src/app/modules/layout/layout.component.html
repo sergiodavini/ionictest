@@ -1,25 +1,25 @@
-<div class="container main">
+<div class="main">
+	
+	<!-- header -->
 	<div class="main-header">
-		<div class="row ">
-			<div class="col s12">
-				<a href="/home" class="brand-logo">Cover me</a>
-				<ul id="nav-mobile" class="right hide-on-med-and-down">
-					<li><a href="about.html">About</a></li>
-				</ul>
-			</div>
-		</div>
+		<mat-toolbar class="mat-elevation-z6">			
+			<button mat-button color="primary">Cover me</button>
+			<span class="example-fill-remaining-space"></span>
+			<button mat-button color="primary">About</button>
+		</mat-toolbar>
 	</div>
 
+	<!-- content -->
 	<div class="main-content">
 		<router-outlet></router-outlet>
 	</div>
 
+	<!-- footer -->
 	<div class="main-footer">
-		<div class="row">
-			<div class="col s12">
-				© Copyright 2018 - Sergio Davini
-				<a class="grey-text text-lighten-4 right" href="#!">Spotify</a>
-			</div>
-		</div>
+		<mat-toolbar >
+			<span color="primary" class="mat-caption">© Copyright 2018 - Sergio Davini </span>
+			<span class="example-fill-remaining-space"></span>
+			<span color="primary" class="mat-caption">© Spotify</span>
+		</mat-toolbar>
 	</div>
 </div>

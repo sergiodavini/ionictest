@@ -1,24 +1,31 @@
 import { Injectable } from '@angular/core';
 import { SpotifyService } from '../spotify/spotify.service';
 import { SpotifyToken } from '../spotify/spotify.token';
+import { UserSession } from './usersession.model';
+
 
 
 @Injectable()
 export class AuthService {
 
-	private name: string;
-	private token: string;
+	private user: UserSession;
 
 	constructor(
 		private spotifyService: SpotifyService
 	) {
-		this.token = sessionStorage.getItem('auth.mm.token');
+		console.log('auth service construct');
 	}
 
 	public getToken(): string {
 		return this.token;
 	}
-	public login(name: string) {
+
+	public login() {
+
+		// non ho il token.. lo richiedo
+
+		// ho il token richiedo 
+
 		this.spotifyService.authorize();
 	}
 
@@ -28,17 +35,18 @@ export class AuthService {
 
 		const spotifytoken: SpotifyToken = this.spotifyService.callback(fragment);
 		if (spotifytoken !== undefined ) {
-			this.token = spotifytoken.access_token;
+			this.user = new UserSession();
+			this.user.token = spotifytoken.access_token;
+			this.user.refreshtoken = spotifytoken.refresh_token;
 			esito = true;
 		}
 
-		sessionStorage.setItem('auth.mm.token', this.token);
 		return esito;
+
 	}
 
-
 	public islogged(): boolean {
-		return (this.token !== undefined) && (this.token !== null);
+		return (this.user !== undefined) ;
 	}
 
 }

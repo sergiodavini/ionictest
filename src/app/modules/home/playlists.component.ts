@@ -55,7 +55,7 @@ export class PlaylistsComponent implements OnInit {
 
 	goPlaylist() {
 		const item: Playlist = this.playlists.items[this.index];
-		this.route.navigate(['cover/' +  item.id]);
+		this.route.navigate(['option/' +  item.id]);
 	}
 
 	next() {

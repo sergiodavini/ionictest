@@ -11,31 +11,13 @@
 .title {
 	padding-bottom: 50px;
 }
-
-button {
-	    font-size: 11px;
-    line-height: 16px;
-    letter-spacing: .015em;
-    font-weight: var(--glue-font-weight-normal);
-    color: #b3b3b3;
-    text-transform: uppercase;
-    letter-spacing: .16em;
-    transition: none 33ms cubic-bezier(.3,0,.7,1);
-    transition-property: all;
-    color: #fff;
-    margin-top: 16px;
-    display: inline-block;
-    margin-bottom: 0;
-    text-align: center;
-    touch-action: manipulation;
-    background-image: none;
-    border: 0;
+button.largebutton {
     border-radius: 500px;
     padding: 13px;
     min-width: 130px;
-    white-space: normal;
-    will-change: transform;
-    line-height: 1.6;
-    vertical-align: middle;
-    user-select: none;
+
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: .015em;
+
 }

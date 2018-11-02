@@ -2,7 +2,6 @@
 	display: flex;
 	height: 100%;
 	flex-direction: column;
-	color: #999999;
 }
 
 .main-header {
@@ -18,8 +17,9 @@
 }
 
 .page-footer {
-	background-color: #212121;
 	position: relative;
-	top: -120px;
-	color: #999999;
+}
+
+.example-fill-remaining-space {
+  flex: 1 1 auto;
 }

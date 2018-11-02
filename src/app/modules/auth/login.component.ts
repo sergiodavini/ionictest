@@ -19,7 +19,7 @@ export class LoginComponent {
 	}
 
 	login() {
-		this.authService.login('prova');
+		this.authService.login();
 
 		console.log('login');
 		// this.router.navigate(['/home']);

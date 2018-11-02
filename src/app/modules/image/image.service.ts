@@ -7,6 +7,11 @@ import { ImageProcessing } from './imageprocessing.model';
 @Injectable()
 export class ImageService {
 
+	formati = [
+		{ id: 1, label: '800 x 600', width: 800, height: 600  },
+		{ id: 2, label: '1024 x 768', width: 1024, height: 768  }
+	];
+
 	constructor(
 		private httpClient: HttpClient
 	) {

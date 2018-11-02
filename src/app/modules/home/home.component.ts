@@ -16,12 +16,8 @@ export class HomeComponent {
 
 	}
 
-	public listNewReleases() {
-		this.route.navigate(['/newrelease']);
-	}
-
-	public listPlaylists() {
-		this.route.navigate(['/playlists']);
+	public login() {
+		this.route.navigate(['/login']);
 	}
 
 }

@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, Router } from '@angular/router';
-import { MaterializeModule } from 'angular2-materialize';
 
 import { AppComponent } from './app.component';
 import { LayoutModule } from './modules/layout/layout.module';
@@ -16,7 +15,8 @@ import { PlaylistComponent } from './modules/home/playlist.component';
 import { PlaylistsComponent } from './modules/home/playlists.component';
 import { CoverComponent } from './modules/home/cover.component';
 import { OptionComponent } from './modules/home/option.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './extmodules/material.module';
 
 const mmRoutes: Routes = [
 	{ path: 'home', component: HomeComponent },
@@ -38,8 +38,8 @@ const mmRoutes: Routes = [
 	imports: [
 		BrowserModule,
 		RouterModule.forRoot(mmRoutes),
+		BrowserAnimationsModule,
 		LayoutModule,
-		MaterializeModule,
 		HomeModule,
 		AuthModule
 	],

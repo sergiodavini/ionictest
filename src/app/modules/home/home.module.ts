@@ -8,6 +8,7 @@ import { PlaylistComponent } from './playlist.component';
 import { ImageService } from '../image/image.service';
 import { CoverComponent } from './cover.component';
 import { OptionComponent } from './option.component';
+import { MaterialModule } from 'src/app/extmodules/material.module';
 
 @NgModule({
 	declarations: [
@@ -16,11 +17,12 @@ import { OptionComponent } from './option.component';
 		PlaylistComponent,
 		PlaylistsComponent,
 		CoverComponent,
-		OptionComponent
+		OptionComponent,
 	],
 	imports: [
 		BrowserModule,
-		CommonModule
+		CommonModule,
+		MaterialModule
 	],
 	providers: [
 		ImageService

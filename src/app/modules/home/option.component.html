@@ -1,3 +1,7 @@
-<canvas #myCanvas width="640" height="640">
-</canvas>
+<div class="input-field col s12">
+<select>
+	<option *ngFor="let format of formati" [value]="format.id">{{format.label}}</option>
+	<label>Scegli il formato</label>
+</select>
 
+</div>
