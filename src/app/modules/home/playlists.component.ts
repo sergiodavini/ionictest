@@ -5,6 +5,7 @@ import { ErrorService } from '../common/error.service';
 import { Playlists, Playlist } from '../spotify/data/playlists.model';
 import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
+import { AppService } from '../common/app.service';
 
 @Component({
 	selector: 'mm-playlists',
@@ -22,17 +23,19 @@ export class PlaylistsComponent implements OnInit {
 		private authService: AuthService,
 		private errorService: ErrorService,
 		private route: Router,
-		private sanitizer: DomSanitizer
+		private sanitizer: DomSanitizer,
+		private appService: AppService
 	) {
 
 	}
 
 	public ngOnInit() {
-		this.listNewReleases(1);
+		this.appService.publishState(this.appService.STATE_LISTS);
+		this.getPlaylists(1);
 	}
 
 
-	public listNewReleases(page) {
+	public getPlaylists(page) {
 
 		const offset: number = (page - 1) * this.pagelimit;
 		const token: string = this.authService.getToken();

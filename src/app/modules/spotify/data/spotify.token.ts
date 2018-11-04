@@ -5,3 +5,4 @@ export class SpotifyToken {
 	public expires_in?: string;
 	public refresh_token?: string;
 }
+ 

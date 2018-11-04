@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { SpotifyToken } from './spotify.token';
+import { Profile } from './data/profile.model';
+import { SpotifyToken } from './data/spotify.token';
 
 
 
@@ -28,7 +29,8 @@ export class SpotifyService {
 
 		const params = fragment.split('&');
 		params.forEach(param => {
-			const values = fragment.split('=');
+			const values = param.split('=');
+			console.log('param', values);
 			if (values[0] === 'access_token') {
 				token.access_token = values[1];
 			} else if (values[0] === 'token_type') {
@@ -42,13 +44,21 @@ export class SpotifyService {
 		return token;
 	}
 
-	token(): Observable<HttpResponse<SpotifyToken>> {
+	accesstoken(): Observable<HttpResponse<SpotifyToken>> {
 		const params: HttpParams = new HttpParams()
 			.set('client_id', environment.clientid)
 			.set('redirect_uri', environment.redirecturi)
 			.set('state', 'RANDOM')
 			.set('scope', 'user-read-private user-read-email');
-		return this.http.post<SpotifyToken>('https://accounts.spotify.com/api/token', null, { observe: 'response' });
+		return this.http.post<SpotifyToken>('https://accounts.spotify.com/api/token', params, { observe: 'response' });
+	}
+
+	getProfile(token: string): Observable<HttpResponse<Profile>> {
+		// const params: HttpParams = new HttpParams();		
+		let hd = new HttpHeaders();
+		hd = hd.append('Authorization', `Bearer ${token}`);
+		
+		return this.http.get<Profile>('https://api.spotify.com/v1/me', { observe: 'response', headers: hd });
 	}
 
 	listNewReleases(token: string, offset: number, limit: number): Observable<HttpResponse<String>> {

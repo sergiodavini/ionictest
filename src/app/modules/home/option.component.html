@@ -1,7 +1,13 @@
-<div class="input-field col s12">
-<select>
-	<option *ngFor="let format of formati" [value]="format.id">{{format.label}}</option>
-	<label>Scegli il formato</label>
-</select>
+<form [formGroup]="form" (ngSubmit)="confirm()">
 
-</div>
+<mat-form-field class="input-field select-format">
+	<h4>Select image format</h4>
+	<mat-select formControlName="format">
+		<mat-option *ngFor="let format of formati" [value]="format">{{format.label}}
+		</mat-option>
+	</mat-select>
+</mat-form-field>
+<div class="input-field select-format">
+		<button class="largebutton" mat-flat-button >Confirm</button>
+	</div>
+</form>

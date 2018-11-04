@@ -51,6 +51,8 @@ export class PlaylistComponent implements OnInit {
 
 		this.playlist = res.body;
 
+
+
 	}
 
 

@@ -11,13 +11,4 @@
 .title {
 	padding-bottom: 50px;
 }
-button.largebutton {
-    border-radius: 500px;
-    padding: 13px;
-    min-width: 130px;
 
-    font-size: 11px;
-    line-height: 16px;
-    letter-spacing: .015em;
-
-}

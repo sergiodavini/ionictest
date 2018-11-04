@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ImageService } from '../image/image.service';
 import { Cover } from '../image/cover.model';
 import { Image } from '../spotify/data/image.model';
+import { AppService } from '../common/app.service';
 
 @Component({
 	selector: 'mm-cover',
@@ -25,13 +26,16 @@ export class CoverComponent implements OnInit {
 	lastpage = false;
 	pagelimit = 50;
 	id;
+	idformat;
+	format;
 
 	constructor (
 		private spotifyService: SpotifyService,
 		private authService: AuthService,
 		private errorService: ErrorService,
 		private route: ActivatedRoute,
-		private imageService: ImageService
+		private imageService: ImageService,
+		private appService: AppService
 	) {
 
 	}
@@ -39,11 +43,17 @@ export class CoverComponent implements OnInit {
 	public ngOnInit() {
 		this.route.params.subscribe(params => {
 			this.id = params['id'];
+			this.idformat = params['format'];
+			console.log('formato da leggere', this.idformat);
+			this.format = this.imageService.getFormato(this.idformat);
+			console.log('formato letto', this.format);
 		});
+		this.appService.publishState(this.appService.STATE_COVER);
 		this.getPlayList();
+
 	}
 
-	public getPlayList() {
+	public getPlayList() { 
 
 		const token: string = this.authService.getToken();
 		this.spotifyService.getPlaylist(token, this.id).subscribe(
@@ -55,6 +65,8 @@ export class CoverComponent implements OnInit {
 	onListSuccess(res) {
 
 		this.playlist = res.body;
+		this.canvashtml.nativeElement.width = this.format.width;
+		this.canvashtml.nativeElement.height = this.format.height;
 
 		const cover = new Cover();
 		cover.canvas = this.canvashtml;

@@ -3,9 +3,11 @@
 	<!-- header -->
 	<div class="main-header">
 		<mat-toolbar class="mat-elevation-z6">			
-			<button mat-button color="primary">Cover me</button>
+			<button mat-button color="primary" (click)="goHome()">Cover me</button>
+			<ng-container *ngIf="state > 0">&nbsp;&gt;&nbsp;<button mat-button color="primary" (click)="goPlaylists()">Playlists</button></ng-container>
+			<ng-container *ngIf="state > 1">&nbsp;&gt;&nbsp;<button mat-button color="primary" (click)="goOption()">Options</button></ng-container>
 			<span class="example-fill-remaining-space"></span>
-			<button mat-button color="primary">About</button>
+			<button mat-button color="primary" *ngIf="user">{{user.name}}</button>
 		</mat-toolbar>
 	</div>
 
