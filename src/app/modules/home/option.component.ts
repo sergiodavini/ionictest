@@ -43,9 +43,10 @@ export class OptionComponent implements OnInit {
 
 		this.route.params.subscribe(params => {
 			this.id = params['id'];
+			this.appService.publishState(this.appService.STATE_OPTION, this.id);
 		});
 		this.formati = this.imageService.formati;
-		this.appService.publishState(this.appService.STATE_OPTION);
+		
 
 	}
 

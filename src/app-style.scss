@@ -46,6 +46,10 @@ body.mm-app {
 		border-color: red;
 	}
 
+	.color-primary {
+		color: mat-color($mm-app-primary);
+	}
+
 	button.largebutton {
 		border-radius: 500px;
 		padding: 13px;

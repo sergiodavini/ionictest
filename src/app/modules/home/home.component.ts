@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
 	}
 
 	public ngOnInit() {
-		this.appService.publishState(this.appService.STATE_HOME);
+		this.appService.publishState(this.appService.STATE_HOME, undefined);
 	}
 
 	public login() {

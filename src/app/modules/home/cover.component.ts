@@ -47,8 +47,8 @@ export class CoverComponent implements OnInit {
 			console.log('formato da leggere', this.idformat);
 			this.format = this.imageService.getFormato(this.idformat);
 			console.log('formato letto', this.format);
+			this.appService.publishState(this.appService.STATE_COVER, this.id);
 		});
-		this.appService.publishState(this.appService.STATE_COVER);
 		this.getPlayList();
 
 	}

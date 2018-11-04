@@ -1,4 +1,4 @@
-<div class="fill-remaining-space"></div>
+
 <div class="imagecontainer" *ngIf="playlists">
 		<div class="leftbutton" >
 				<button mat-icon-button color="primary" (click)="previous()">
@@ -6,12 +6,12 @@
 				</button>
 			</div>
 			<div class="centerimage" (click)="goPlaylist()">
-		<div class="imagetitle title" >
+		<div class="imagetitle title color-primary">
 			Select the playlist
 		</div>
 		<div class="imagecover" [style.background-image]="getCurrentImage()" >
 		</div>
-		<div class="imagetext" >
+		<div class="imagetext color-primary" >
 			{{playlists.items[index].name}}
 		</div>
 	</div>

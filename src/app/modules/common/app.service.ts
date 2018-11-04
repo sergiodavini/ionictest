@@ -8,8 +8,8 @@ export class AppService {
 	private user:UserSession;
 	private obsUser: Observable<UserSession>;
 	private observerUser;
-
 	private statesource = new Subject<number>();
+	public id;
 
 
 	public STATE_HOME = 0;
@@ -31,7 +31,8 @@ export class AppService {
 		return this.obsUser;
 	}
 
-	public publishState(state: number) {
+	public publishState(state: number, id: string ) {
+		this.id  = id;
 		console.log('publish state', state);
 		this.state = state;
 		this.statesource.next(this.state);

@@ -30,7 +30,7 @@ export class PlaylistsComponent implements OnInit {
 	}
 
 	public ngOnInit() {
-		this.appService.publishState(this.appService.STATE_LISTS);
+		this.appService.publishState(this.appService.STATE_LISTS, undefined);
 		this.getPlaylists(1);
 	}
 
