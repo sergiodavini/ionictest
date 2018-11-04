@@ -6,21 +6,25 @@
 			<button mat-button color="primary" (click)="goHome()">Cover me</button>
 			<ng-container *ngIf="state > 0">&nbsp;&gt;&nbsp;<button mat-button color="primary" (click)="goPlaylists()">Playlists</button></ng-container>
 			<ng-container *ngIf="state > 1">&nbsp;&gt;&nbsp;<button mat-button color="primary" (click)="goOption()">Options</button></ng-container>
-			<span class="example-fill-remaining-space"></span>
+			<span class="fill-remaining-space"></span>
 			<button mat-button color="primary" *ngIf="user">{{user.name}}</button>
 		</mat-toolbar>
 	</div>
+
+	<span class="fill-remaining-space"></span>
 
 	<!-- content -->
 	<div class="main-content">
 		<router-outlet></router-outlet>
 	</div>
 
+	<span class="fill-remaining-space"></span>
+
 	<!-- footer -->
 	<div class="main-footer">
 		<mat-toolbar >
 			<span color="primary" class="mat-caption">© Copyright 2018 - Sergio Davini </span>
-			<span class="example-fill-remaining-space"></span>
+			<span class="fill-remaining-space"></span>
 			<span color="primary" class="mat-caption">© Spotify</span>
 		</mat-toolbar>
 	</div>

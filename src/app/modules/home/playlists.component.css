@@ -1,15 +1,19 @@
 :host {
-	height: 80vh;
-	width: 100vh;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
 }
 
 div.imagecontainer {
-	padding: 100px;
+	
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
-	height: 100%;
-	width: 100%;
+	height: 50vh;
+	width: 60vw;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 div.leftbutton {
@@ -23,12 +27,22 @@ div.centerimage {
 	align-items: center;
 	justify-content: center;
 }
-.imagecover {
+div.imagecover {
 	height: 100%;
 	width: 100%;
 	background-size: contain; 
     background-repeat: no-repeat; 
     background-position: center;
+
+}
+div.imagetitle {
+	padding: 10px;
+	text-align: center;
+}
+
+div.imagetext {
+	padding: 10px;
+	text-align: center;
 
 }
 div.rightbutton {

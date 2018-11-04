@@ -45,7 +45,7 @@ export class AuthService {
 			user.name = obj.name;
 			user.refreshtoken = obj.refreshtoken;
 			user.token = obj.token;
-			user.expires = obj.expires;
+			user.expires = new Date(obj.expires);
 			console.log('user from storage', user);
 		}
 
@@ -126,6 +126,7 @@ export class AuthService {
 		user.token = spotifytoken.access_token;
 		user.refreshtoken = spotifytoken.refresh_token;
 		const date = new Date();
+		console.log('adesso è ', date);
 		date.setMinutes(date.getMinutes() + 55);
 		user.expires = date;
 		console.log('il token scade a ', date);

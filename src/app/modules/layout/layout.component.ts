@@ -46,6 +46,12 @@ export class LayoutComponent implements OnInit, OnDestroy {
 	public goHome() {
 		this.router.navigate(['home']);
 	}
+	public goPlaylists() {
+		this.router.navigate(['playlists']);
+	}
+	public goOption() {
+		this.router.navigate(['option']);
+	}
 
 
 }

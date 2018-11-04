@@ -12,6 +12,10 @@ export class UserSession {
 
 	public isValidSession(): boolean {
 		const date = new Date();
+		console.log('isValid', this.token);
+		console.log('isValid', date);
+		console.log('isValid', this.expires);
+		console.log('isValid', date < this.expires);
 		return  this.token != undefined && date < this.expires;
 	}
 }

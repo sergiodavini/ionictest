@@ -55,6 +55,10 @@ body.mm-app {
 		line-height: 16px;
 		letter-spacing: .015em;	
 	}
+
+	.fill-remaining-space {
+		flex: 1 1 auto;
+	  }
 }
 
 

@@ -9,9 +9,10 @@
 }
 .main-content {
 	display: flex;
-	flex: 2 auto;
 	align-items: center;
 	justify-content: center;
+	height: 80vh;
+	width: 100%;
 }
 .main-footer {
 }
@@ -20,6 +21,3 @@
 	position: relative;
 }
 
-.example-fill-remaining-space {
-  flex: 1 1 auto;
-}
