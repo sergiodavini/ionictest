@@ -1,11 +1,12 @@
-
 <div class="imagecontainer" *ngIf="playlists">
-		<div class="leftbutton" >
-				<button mat-icon-button color="primary" (click)="previous()">
-					<mat-icon aria-label="next playlst">keyboard_arrow_left</mat-icon>
-				</button>
-			</div>
-			<div class="centerimage" (click)="goPlaylist()">
+	<div class="fill-remaining-space"></div>
+	<div class="leftbutton" >
+		<button mat-icon-button color="primary" (click)="previous()">
+			<mat-icon aria-label="next playlst">keyboard_arrow_left</mat-icon>
+		</button>
+	</div>
+	<!--
+	<div class="centerimage" (click)="goPlaylist()">
 		<div class="imagetitle title color-primary">
 			Select the playlist
 		</div>
@@ -15,10 +16,23 @@
 			{{playlists.items[index].name}}
 		</div>
 	</div>
+	-->
+	<div class="centerimage" (click)="goPlaylist()">
+		<mat-card>
+			<div class="imagetitle title color-primary">
+			Select the playlist
+		</div>
+		<img class="imagecover" [src]="getCurrentImageUrl()" mat-card-image />
+		<div class="imagetext color-primary" >
+			{{playlists.items[index].name}}
+		</div>
+		</mat-card>
+	</div>
 	<div class="rightbutton" >
 		<button mat-icon-button color="primary" (click)="next()">
 			<mat-icon aria-label="next playlst">keyboard_arrow_right</mat-icon>
 		</button>
 	</div>
+	<div class="fill-remaining-space"></div>
 </div>
 <div class="fill-remaining-space"></div>

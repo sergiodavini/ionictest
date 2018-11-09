@@ -79,6 +79,11 @@ export class PlaylistsComponent implements OnInit {
 		return this.sanitizer.bypassSecurityTrustStyle('url(\'' + url + '\')');
 	}
 
+	getCurrentImageUrl() {
+		const url = this.getImage(this.playlists.items[this.index]);
+		return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+	}
+ 
 	getImage(item: Playlist): string {
 		let size = -1;
 		let url;
