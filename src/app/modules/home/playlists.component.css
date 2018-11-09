@@ -26,6 +26,8 @@ div.centerimage {
 	flex: 1 1 auto;
 	align-items: center;
 	justify-content: center;
+	display: flex;
+	
 }
 div.imagecover {
 	height: 100%;
